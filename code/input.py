@@ -2,16 +2,22 @@ from abc import ABC, abstractmethod
 import time
 import random
 
+#@abstract method provides the interface
+#use this to pass data to output, enforce that a dictionary is needed?
+
 class DataGenerationMethod(ABC):
     @abstractmethod
     def input_data(self):
+        pass
+    @abstractmethod
+    def output_data(self,data):
         pass
 
 class GenerateDataFromSensor(DataGenerationMethod):
     
     try:
         import RPi.GPIO as GPIO
-        import Freenove_DHT as DHT
+        import code.Freenove_DHT as DHT
     except ImportError:
         print("module not available")
 
@@ -43,6 +49,9 @@ class GenerateDataFromRandom(DataGenerationMethod):
             print("Humidity : %.2f, \t Temperature : %.2f \n"%(humidity,temperature))
             time.sleep(2)
 
+    def output_data(self, data):
+        pass
+    
 class GenerateDataFactory:
     data_generation_types = {
         'sensor': GenerateDataFromSensor,
@@ -55,6 +64,3 @@ class GenerateDataFactory:
             return data_generation_class()
         else:
             raise ValueError("Invalid data generation type")
-
-if __name__ == '__main__':
-    print ('Program is starting ... ')
