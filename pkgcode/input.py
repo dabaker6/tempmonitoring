@@ -17,7 +17,7 @@ class GenerateDataFromSensor(DataGenerationMethod):
     
     try:
         import RPi.GPIO as GPIO
-        import code.Freenove_DHT as DHT
+        import pkgcode.Freenove_DHT as DHT
     except ImportError:
         print("module not available")
 
