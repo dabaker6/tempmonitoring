@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datetime import datetime
 from typing import Dict
 
 #@abstract method provides the interface
@@ -8,6 +9,7 @@ class Data(ABC):
     def __init__(self, temperature, humidity):
         self.__set_temperature(temperature)
         self.__set_humidity(humidity)
+        self.timestamp = datetime.now().timestamp()
     
     @abstractmethod
     def data(self) -> Dict[str,float]:
@@ -28,6 +30,7 @@ class DataToSend(Data):
     def data(self):
         
         data = dict(
+            timestamp=self.timestamp,
             temperature=self.temperature,
             humidity=self.humidity
         )

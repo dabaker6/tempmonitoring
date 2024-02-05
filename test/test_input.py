@@ -23,8 +23,10 @@ class Input(unittest.TestCase):
 
     def test_sensor_input_values(self):
         data = self.sensor.input_data()
+        
         self.assertIsInstance(data.temperature,float)
         self.assertIsInstance(data.humidity,float)
+        self.assertIsInstance(data.timestamp,float)
         
 if __name__ == '__main__':
     unittest.main()        
