@@ -8,7 +8,7 @@ class ConfigManager:
             cls._instance = super(ConfigManager, cls).__new__(cls)
             cls._instance._config = configparser.ConfigParser()
             try:
-                filename = 'pkgcode/config.ini'
+                filename = 'maincode/config.ini'
                 cls._instance._config.read_file(open(filename))
             except FileNotFoundError:
                 print('file: %s not found, please amend and try again' %filename)

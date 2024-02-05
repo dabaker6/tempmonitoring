@@ -10,17 +10,17 @@ class Data(ABC):
         self.__set_humidity(humidity)
     
     @abstractmethod
-    def data(self) -> Dict[str,int]:
+    def data(self) -> Dict[str,float]:
         pass
 
     def __set_temperature(self, temperature):
-        if not isinstance(temperature,int):
-            raise ValueError("temperature must be an integer")
+        if not isinstance(temperature,float):
+            raise ValueError("temperature must be of type: float")
         self.temperature = temperature
 
     def __set_humidity(self, humidity):
-        if not isinstance(humidity,int):
-            raise ValueError("humidity must be an integer")
+        if not isinstance(humidity,float):
+            raise ValueError("humidity must be of type: float")
         self.humidity = humidity
 
 class DataToSend(Data):
